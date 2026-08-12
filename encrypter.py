@@ -1,5 +1,5 @@
 #ord(caractere) + base - variancia
-
+#espaço e virgula funciona de maneira blocada variancia = 3
 class CesarCipher:
 
     def __init__(self):
@@ -20,6 +20,9 @@ class CesarCipher:
             elif caractere == ",":
                 response = self.__if_comma_encrypted(caractere=caractere, variance=variance)
 
+            elif isinstance(caractere, int) == True:
+                response = self.__if_numbers_encrypted(caractere=caractere, variance=variance)
+
             lista.append(response)
         return "".join(lista)
 
@@ -32,11 +35,21 @@ class CesarCipher:
             elif caractere.isupper():
                 response = self.__decriptar_cesar_upper(caractere, variance)
 
+            elif caractere == ' ':
+                response = ' '
+
+            elif caractere == ',':
+                response = ','
+
             elif caractere == '#':
                 response = self.__if_space_decrypted(caractere=caractere, variance=variance)
 
             elif caractere == "/":
                 response = self.__if_comma_decrypted(caractere=caractere, variance=variance)
+
+            elif caractere in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
+                response = self.__if_numbers_decrypted(caractere=caractere, variance=variance)
+
 
             lista.append(response)
         return "".join(lista)
@@ -73,9 +86,17 @@ class CesarCipher:
     def __if_comma_decrypted(self, caractere: str, variance: int) -> str:
         comma_decrypted = chr((ord(caractere) - ord(',') - variance) % 26 + ord(','))
         return comma_decrypted
+
+    def __if_numbers_encrypted(self, caractere: str, variance: int) -> str:
+        comma_crypted = chr((ord(caractere) - ord('0') + variance) % 10 + ord('0'))
+        return comma_crypted    
+
+    def __if_numbers_decrypted(self, caractere: str, variance: int) -> str:
+        comma_decrypted = chr((ord(caractere) - ord('0') - variance) % 26 + ord('0'))
+        return comma_decrypted
     
-cripta = CesarCipher()
-encriptado = cripta.encrypter('Me ajuda yoda, me ajuda, mata o kazhix pelo menos', 3)
-print(encriptado)
-decriptado = cripta.decrypter(encriptado, 3) #tem que saber a variancia para poder acertar a casa certa
-print(decriptado)
+# cripta = CesarCipher()
+# encriptado = cripta.encrypter('Me ajuda yoda, me ajuda, mata o kazhix pelo menos', 3)
+# print(encriptado)
+# decriptado = cripta.decrypter(encriptado, 3) #tem que saber a variancia para poder acertar a casa certa
+# print(decriptado)
