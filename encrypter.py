@@ -41,6 +41,7 @@ class CesarCipher:
             elif caractere == ',':
                 response = ','
 
+            #funções abaixo blocadas
             elif caractere == '#':
                 response = self.__if_space_decrypted(caractere=caractere, variance=variance)
 
