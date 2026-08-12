@@ -7,4 +7,4 @@ frase = "Whyhiluz, klzjviypb h tluzhnlt l apyvb 87"
 
 
 for num in range(26):
-    print(f'Frase num {num}: {decriptador.decrypter(frase, num)}')
+    print(f'Frase num {num}: {decriptador.decrypter(frase, num)}') 
