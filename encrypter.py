@@ -20,7 +20,7 @@ class CesarCipher:
             elif caractere == ",":
                 response = self.__if_comma_encrypted(caractere=caractere, variance=variance)
 
-            elif isinstance(caractere, int) == True:
+            elif caractere in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
                 response = self.__if_numbers_encrypted(caractere=caractere, variance=variance)
 
             lista.append(response)
