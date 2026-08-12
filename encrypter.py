@@ -1,5 +1,5 @@
 #ord(caractere) + base - variancia
-
+#espaço e virgula funciona de maneira blocada variancia = 3
 class CesarCipher:
 
     def __init__(self):
@@ -60,7 +60,7 @@ class CesarCipher:
         space_decrypted = chr((ord(caractere) - ord(' ') - variance) % 26 + ord(' '))
         return space_decrypted
     
-cripta = CesarCypher()
+cripta = CesarCipher()
 encriptado = cripta.encrypter('Me ajuda yoda, me ajuda, mata o kazhix pelo menos', 3)
 print(encriptado)
 decriptado = cripta.decrypter(encriptado, 3) #tem que saber a variancia para poder acertar a casa certa
