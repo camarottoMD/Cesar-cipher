@@ -17,6 +17,9 @@ class CesarCipher:
             elif caractere == " ":
                 response = self.__if_space_encrypted(caractere=caractere, variance=variance)
 
+            elif caractere == ",":
+                response = self.__if_comma_encrypted(caractere=caractere, variance=variance)
+
             lista.append(response)
         return "".join(lista)
 
@@ -31,6 +34,9 @@ class CesarCipher:
 
             elif caractere == '#':
                 response = self.__if_space_decrypted(caractere=caractere, variance=variance)
+
+            elif caractere == "/":
+                response = self.__if_comma_decrypted(caractere=caractere, variance=variance)
 
             lista.append(response)
         return "".join(lista)
@@ -59,10 +65,17 @@ class CesarCipher:
     def __if_space_decrypted(self, caractere: str, variance: int) -> str:
         space_decrypted = chr((ord(caractere) - ord(' ') - variance) % 26 + ord(' '))
         return space_decrypted
+
+    def __if_comma_encrypted(self, caractere: str, variance: int) -> str:
+        comma_crypted = chr((ord(caractere) - ord(',') + variance) % 26 + ord(','))
+        return comma_crypted    
+
+    def __if_comma_decrypted(self, caractere: str, variance: int) -> str:
+        comma_decrypted = chr((ord(caractere) - ord(',') - variance) % 26 + ord(','))
+        return comma_decrypted
     
 cripta = CesarCipher()
 encriptado = cripta.encrypter('Me ajuda yoda, me ajuda, mata o kazhix pelo menos', 3)
 print(encriptado)
 decriptado = cripta.decrypter(encriptado, 3) #tem que saber a variancia para poder acertar a casa certa
 print(decriptado)
-
